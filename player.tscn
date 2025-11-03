@@ -1,20 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw74sbl6xcjng"]
+[gd_scene load_steps=11 format=3 uid="uid://bw74sbl6xcjng"]
 
 [ext_resource type="Texture2D" uid="uid://brmwdx17uvb72" path="res://assets/sprites/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cufm33k4bxo1l" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://djs14blk2ahp7" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="3_i3pqv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_onrkg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(6, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 7.0
+height = 32.0
+
+[sub_resource type="Gradient" id="Gradient_hqtel"]
+offsets = PackedFloat32Array(0.3360324, 0.78137654)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sweqy"]
+gradient = SubResource("Gradient_hqtel")
+fill = 1
+fill_from = Vector2(0.4957265, 0.51282054)
+fill_to = Vector2(0.051282052, 0.94871795)
+
+[sub_resource type="Gradient" id="Gradient_i3pqv"]
+offsets = PackedFloat32Array(0, 0.2672065)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hqtel"]
+gradient = SubResource("Gradient_i3pqv")
+
+[sub_resource type="Gradient" id="Gradient_onrkg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
+gradient = SubResource("Gradient_onrkg")
+fill_from = Vector2(0.115384616, 0.42735043)
+fill_to = Vector2(1, 0.35897437)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_onrkg")
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_i3pqv")
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_onrkg")
 
 [node name="Player" type="Sprite2D" parent="."]
 texture = ExtResource("1_4flbx")
@@ -23,11 +48,23 @@ texture = ExtResource("1_4flbx")
 offset = Vector2(0, -16)
 zoom = Vector2(5, 5)
 
-[node name="light" type="Sprite2D" parent="."]
+[node name="radiant" type="PointLight2D" parent="."]
+position = Vector2(63.000008, -13)
+scale = Vector2(6.727431, 3.3420136)
+energy = 1.01
+blend_mode = 2
+texture = SubResource("GradientTexture2D_sweqy")
+texture_scale = 0.36
 
-[node name="PointLight2D" type="PointLight2D" parent="light"]
-position = Vector2(-9.536743e-07, 0)
-scale = Vector2(0.111328036, 0.11328125)
-color = Color(0.18359044, 0.18359044, 0.18359044, 1)
-energy = 2.02
-texture = ExtResource("3_i3pqv")
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(36.77497, -11.499999)
+scale = Vector2(0.22623712, 5.30303)
+texture = SubResource("GradientTexture1D_hqtel")
+texture_scale = 1.32
+
+[node name="monitor" type="PointLight2D" parent="."]
+position = Vector2(0.5, -11.5)
+scale = Vector2(0.109375, 0.07812501)
+energy = 5.44
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_i3pqv")

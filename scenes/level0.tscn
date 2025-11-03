@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://bhxiyc7n5h1h"]
+[gd_scene load_steps=11 format=4 uid="uid://bhxiyc7n5h1h"]
 
 [ext_resource type="Texture2D" uid="uid://iv2uvsecx0ll" path="res://assets/sprites/hallway_tileset.png" id="1_4exd7"]
 [ext_resource type="Texture2D" uid="uid://dbtog0rwf741w" path="res://assets/sprites/background.png" id="2_2h6oo"]
 [ext_resource type="PackedScene" uid="uid://bw74sbl6xcjng" path="res://player.tscn" id="2_ic6my"]
 [ext_resource type="Texture2D" uid="uid://dsaj37b7s4tb8" path="res://assets/sprites/background2.png" id="3_x1x1l"]
-[ext_resource type="Texture2D" uid="uid://djs14blk2ahp7" path="res://assets/sprites/2d_lights_and_shadows_neutral_point_light.webp" id="5_x1x1l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2h6oo"]
 
@@ -56,19 +55,7 @@ position = Vector2(27, -18)
 collision_layer = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(9.776559e-09, 0.08538585, 0.035387594, 1)
+color = Color(0.019607844, 0, 0.019607844, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CompressedTexture2D_gklfi")
-
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(29, -35)
-scale = Vector2(0.140625, 0.14453125)
-shadow_enabled = true
-texture = ExtResource("5_x1x1l")
-texture_scale = 0.68
-
-[node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(81, -35)
-scale = Vector2(0.140625, 0.14453125)
-texture = ExtResource("5_x1x1l")
